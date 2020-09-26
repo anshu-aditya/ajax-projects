@@ -28,8 +28,14 @@
 
 		//connection to server
 		xhr.open("GET", "http://localhost/ajax-projects/suggestion/server.php?user_text="+input_text, true);
+		//using POST method
+		// xhr.open("POST","http://localhost/ajax-projects/suggestion/server.php",true);
+		//setting request header type and it's value
+		// xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
 		//send data to server
 		xhr.send();
+		//using POST method
+		// xhr.send("user_text="+input_text);
 	}
 
 </script>

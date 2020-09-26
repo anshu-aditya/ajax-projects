@@ -1,6 +1,6 @@
 <?php 
 
-$user_text = $_GET['user_text'];
+$user_text = $_REQUEST['user_text'];
 
 $response = strtoupper("$user_text");
 echo $response;
