@@ -9,35 +9,30 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <!-- @import -->
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
 <script type="text/javascript">
 
 	function update_Text(){
-		var input_text = document.getElementById('user_text').value;
 
-		//ajax call
-		var xhr = new XMLHttpRequest();
-		xhr.onreadystatechange = function(){
-			if(xhr.readyState == 4 && xhr.status == 200){
-				var response = xhr.responseText;
-				document.getElementById('server_response').value = response;
+		var user_input = $('#user_text').val();
+		console.log(user_input);
+		//ajax using GET 
+		// $.get("http://localhost/ajax-projects/suggestion/server-jQ.php","user_text="+user_input	,
+		// 	function(response,status,xhr){
+		// $('#server_response').val(response);
 
+		// }, "text");	
+
+		//ajax using POST
+		$.post("http://localhost/ajax-projects/suggestion/server-jQ.php","user_text="+user_input,
+			function(response,status,xhr){
+				$('#server_response').val(response);
 			}
-		}
-
-		//connection to server
-		xhr.open("GET", "http://localhost/ajax-projects/suggestion/server.php?user_text="+input_text, true);
-		//using POST method
-		// xhr.open("POST","http://localhost/ajax-projects/suggestion/server.php",true);
-		//setting request header type and it's value
-		// xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
-		//send data to server
-		xhr.send();
-		//using POST method
-		// xhr.send("user_text="+input_text);
+			,"text");
 	}
-
+	
+	
 </script>
 
 	<title>Ajax Projects</title>
