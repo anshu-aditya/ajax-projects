@@ -13,23 +13,31 @@
 
 <script type="text/javascript">
 
-	function update_Text(){
+	function update_Text()
+	{
 
 		var user_input = $('#user_text').val();
-		console.log(user_input);
-		//ajax using GET 
-		// $.get("http://localhost/ajax-projects/suggestion/server-jQ.php","user_text="+user_input	,
-		// 	function(response,status,xhr){
-		// $('#server_response').val(response);
 
-		// }, "text");	
 
-		//ajax using POST
-		$.post("http://localhost/ajax-projects/suggestion/server-jQ.php","user_text="+user_input,
-			function(response,status,xhr){
-				$('#server_response').val(response);
-			}
-			,"text");
+		$.ajax(
+			{
+				url : "http://localhost/ajax-projects/suggestion/server-jQ.php",
+				data : "user_text="+user_input,
+				type : "post",
+				dataType : "text",
+
+				success(response)
+					{
+						$("#server_response").val(response);
+					},
+				error(error,status)
+					{
+						if(status != 200)
+							alert("some error occurred"+error);
+					}	
+
+			});
+		
 	}
 	
 	
