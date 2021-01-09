@@ -1,0 +1,40 @@
+body{
+
+	margin: 0;
+	padding: 0;
+	background-color: #DDAF94;
+}
+
+h1{
+	text-align: center;
+	color: #FDF8F5;
+	font-weight: bold;
+	font-size: 50px;
+	font-family: 'Dancing Script', cursive;
+}
+
+span{
+
+	text-decoration: none;
+}
+
+label,input{
+	color: #FDF8F5;
+	font-family: 'Raleway', sans-serif;
+}
+
+input[type="submit"]{
+	background-color: #4F4846;
+}
+input[type="submit"]:hover{
+	background-color: #373231;
+}
+
+form#chat-form{
+	margin-top: 5%;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
