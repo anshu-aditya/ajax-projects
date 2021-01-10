@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- @import -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+	function update_Text(){
+
+		var $input_text = $('#user_text').val();
+
+		$.ajax(
+		{
+			url: "http://localhost/ajax-projects/suggestion/server.php",
+			type: "get",
+			data: {user_text: $input_text},
+			dataType: "text",
+			success: function(response)
+			{
+				$('#server_response').val(response);
+			},
+			error: function(error)
+			{
+				alert(error);
+			},
+
+		});
+
+		
+	}
+
+</script>
+
+	<title>Ajax Projects</title>
+</head>
+<body>
+	<div class="container">
+		<div class="jumbotron col-xs-6 col-xs-offset-3">
+			<h3 class="text-center" style="font-family: 'Playfair Display', serif;">This is a Simple suggestion box implemented using Ajax</h3>
+				<div class="form-group">
+					<label for="user_text">User Text:</label>
+					<input class="form-control" type="text" id="user_text" name="user_text" onkeyup="update_Text();" placeholder="user text">		
+				</div>
+				<div class="form-group">
+					<label for="server_response">Server Response:</label>
+					<input class="form-control" type="text" id="server_response" name="server_response" placeholder="server response" readonly>
+				</div>
+		</div>
+	</div>
+
+</body>
+</html>
